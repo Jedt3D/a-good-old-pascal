@@ -18,6 +18,7 @@ type
     procedure btnCheckGenClick(Sender: TObject);
     procedure scrAgeRangeChange(Sender: TObject);
   private
+    function CheckGen(age: Integer): String;
     { Private declarations }
   public
     { Public declarations }
@@ -35,8 +36,18 @@ implementation
 procedure TForm1.btnCheckGenClick(Sender: TObject);
 begin
   age := scrAgeRange.Position;
-  gen := '';
+  gen := CheckGen(age);
 
+  ShowMessage('You are a ' + gen);
+end;
+
+procedure TForm1.scrAgeRangeChange(Sender: TObject);
+begin
+  labSelectedAge.Caption := scrAgeRange.Position.ToString();
+end;
+
+function TForm1.CheckGen(age: Integer): string;
+begin
   if age > 79 then
     gen := 'Maturists'
   else if age >= 64 then
@@ -47,13 +58,7 @@ begin
     gen := 'Gen Y'
   else
     gen := 'Gen Z';
-
-  ShowMessage('You are a ' + gen);
-end;
-
-procedure TForm1.scrAgeRangeChange(Sender: TObject);
-begin
-    labSelectedAge.Caption := scrAgeRange.Position.ToString();
+  Result := gen;
 end;
 
 end.
