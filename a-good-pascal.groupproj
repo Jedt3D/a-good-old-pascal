@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D316C4C3-B64B-4FD5-AC7E-3E3CEE0F73A9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="01-hello-world\Ch01HelloWorld.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="02-age-verify\Ch02AgeVerify.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Ch01HelloWorld">
+        <MSBuild Projects="01-hello-world\Ch01HelloWorld.dproj"/>
+    </Target>
+    <Target Name="Ch01HelloWorld:Clean">
+        <MSBuild Projects="01-hello-world\Ch01HelloWorld.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ch01HelloWorld:Make">
+        <MSBuild Projects="01-hello-world\Ch01HelloWorld.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Ch02AgeVerify">
+        <MSBuild Projects="02-age-verify\Ch02AgeVerify.dproj"/>
+    </Target>
+    <Target Name="Ch02AgeVerify:Clean">
+        <MSBuild Projects="02-age-verify\Ch02AgeVerify.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ch02AgeVerify:Make">
+        <MSBuild Projects="02-age-verify\Ch02AgeVerify.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Ch01HelloWorld;Ch02AgeVerify"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Ch01HelloWorld:Clean;Ch02AgeVerify:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Ch01HelloWorld:Make;Ch02AgeVerify:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
