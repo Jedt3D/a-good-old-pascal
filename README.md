@@ -8,4 +8,5 @@ The language is the compile to native binary, so it'll be easy to deploy to each
 
 ## Change Log:
 
-- Basic Hello World
+- Basic Hello World, Age Test
+- Enable Skia to the projects
